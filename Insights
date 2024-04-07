@@ -1,0 +1,35 @@
+class Insights:
+    def __init__(self):
+        self.personalized_tips = []
+        self.financial_health = None
+        self.trends_charts = {}
+
+    def add_tip(self, tip):
+        self.personalized_tips.append(tip)
+
+    def set_financial_health(self, health):
+        self.financial_health = health
+
+    def add_trend_chart(self, category, data):
+        self.trends_charts[category] = data
+
+    def display_insights(self):
+        print("Insights:")
+        print(f"Financial Health: {self.financial_health}")
+        print("Personalized Tips:")
+        for tip in self.personalized_tips:
+            print(f"- {tip}")
+        print("Trends Charts:")
+        for category, data in self.trends_charts.items():
+            print(f"{category}: {data}")
+
+# Example usage
+if __name__ == "__main__":
+    insights = Insights()
+    insights.add_tip("Save at least 20% of your income.")
+    insights.add_tip("Avoid unnecessary expenses.")
+    insights.set_financial_health("Good")
+    insights.add_trend_chart("Spending", "Upward trend")
+    insights.add_trend_chart("Savings", "Steady growth")
+
+    insights.display_insights()
