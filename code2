@@ -1,0 +1,32 @@
+class FinancialGoal:
+    def __init__(self, name, target_amount):
+        self.name = name
+        self.target_amount = target_amount
+        self.current_amount = 0
+
+    def add_funds(self, amount):
+        self.current_amount += amount
+
+    def get_progress(self):
+        return (self.current_amount / self.target_amount) * 100
+
+class GoalManager:
+    def __init__(self):
+        self.goals = []
+
+    def add_goal(self, name, target_amount):
+        new_goal = FinancialGoal(name, target_amount)
+        self.goals.append(new_goal)
+        print(f"New goal '{name}' added with a target of {target_amount}")
+
+    def contribute_to_goal(self, goal_name, amount):
+        for goal in self.goals:
+            if goal.name == goal_name:
+                goal.add_funds(amount)
+                print(f"Added {amount} to '{goal_name}'. Current progress: {goal.get_progress():.2f}%")
+
+# Example usage:
+manager = GoalManager()
+manager.add_goal('Vacation Fund', 5000)
+manager.add_goal('Emergency Savings', 10000)
+manager.contribute_to_goal('Vacation Fund', 150)
