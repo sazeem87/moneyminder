@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Minder Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1a1a2e; /* Bluish black color */
+            color: white; /* Text color */
+        }
+        .container {
+            background-color: #222; /* Dark gray color for container */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding for container */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Box shadow effect */
+        }
+        .form-group label {
+            color: white; /* Label text color */
+        }
+        .btn-primary {
+            background-color: #5f0f40; /* Purple color for login button */
+            border-color: #5f0f40; /* Border color */
+        }
+        .btn-primary:hover {
+            background-color: #7a367a; /* Darker purple color on hover */
+            border-color: #7a367a; /* Border color */
+        }
+        .btn-link {
+            color: #f2a154; /* Link color */
+        }
+        .logo {
+            display: block;
+            margin: auto;
+            width: 150px; /* Adjust width as needed */
+            margin-bottom: 20px; /* Margin below the logo */
+        }
+        .login-tab {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 10px;
+            background-color: #007bff; /* Blue color for tabs */
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff; /* Tab text color */
+        }
+        .login-tab:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Add logo -->
+        <img src="financial_logo.png" alt="Money Minder Logo" class="logo">
+        <form id="loginForm" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <!-- Add reset password button/link -->
+            <a href="/reset-password" class="btn btn-link">Reset Password</a>
+        </form>
+        <!-- Login via Apple and Google tabs -->
+        <div class="mt-3">
+            <div class="login-tab">Login via Apple</div>
+            <div class="login-tab">Login via Google</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('loginForm');
+            var attempts = 0;
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
+
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+
+                // Dummy check for username and password
+                if (username === 'your_username' && password === 'your_password') {
+                    // Successful login
+                    alert('Login successful!');
+                    window.location.href = '/dashboard'; // Redirect to dashboard page
+                } else {
+                    // Invalid login attempt
+                    attempts++;
+                    if (attempts >= 3) {
+                        // Limit reached, disable the login form
+                        form.reset();
+                        alert('You have reached the maximum number of login attempts. Please try again later.');
+                        return;
+                    }
+                    // Inform user about remaining attempts
+                    var remainingAttempts = 3 - attempts;
+                    alert('Invalid username or password. You have ' + remainingAttempts + ' attempts remaining.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+from flask import Flask, render_template, request, redirect, url_for
+
+app = Flask(__name__)
+
+# Dummy user data (replace with database)
+users = {
+    "user1": {"password": "password1"},
+    "user2": {"password": "password2"}
+}
+
+# Dummy financial data (replace with real data handling)
+financial_data = {
+    "user1": {
+        "budget": {"food": 500, "shopping": 300, "entertainment": 200},
+        "transactions": [
+            {"category": "food", "amount": -50},
+            {"category": "shopping", "amount": -100},
+            {"category": "entertainment", "amount": -20}
+        ]
+    }
+}
+
+@app.route("/")
+def index():
+    return redirect(url_for('login'))
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        if username in users and users[username]["password"] == password:
+            return redirect(url_for("dashboard", username=username))
+        else:
+            return "Invalid username or password"
+    return render_template("login.html")
+
+@app.route("/dashboard/<username>")
+def dashboard(username):
+    if username in financial_data:
+        return render_template("dashboard.html", username=username, data=financial_data[username])
+    else:
+        return "User not found"
+
+if __name__ == "__main__":
+    app.run(debug=True)

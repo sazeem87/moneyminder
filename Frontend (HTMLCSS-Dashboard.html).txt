@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a1a2e; /* Bluish black background */
+            color: white; /* Text color */
+            font-family: Arial, sans-serif; /* Font family */
+            position: relative; /* Position relative for absolute positioning */
+        }
+        .container {
+            background-color: #222; /* Dark gray container background */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding for container */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Box shadow effect */
+            margin-top: 50px; /* Add margin from top */
+        }
+        h1, h2 {
+            color: #f2a154; /* Yellow heading color */
+        }
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+        }
+        li {
+            margin-bottom: 10px; /* Add margin between list items */
+        }
+        .tab {
+            display: inline-block;
+            margin-right: 20px;
+            padding: 10px;
+            background-color: #007bff; /* Blue color for tabs */
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff; /* Tab text color */
+        }
+        .tab:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+        .tab-content {
+            margin-top: 20px; /* Add margin above tab content */
+        }
+        .settings {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .settings .btn {
+            margin-left: 10px; /* Add margin between buttons */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="settings">
+            <button class="btn btn-primary"><i class="fas fa-cog"></i></button>
+            <button class="btn btn-danger">Log Out</button>
+        </div>
+        <h1>Welcome, Salman Azeem</h1>
+        <div class="tabs">
+            <div class="tab">Accounts</div>
+            <div class="tab">Credit Score</div>
+            <div class="tab">Budgeting</div>
+            <div class="tab">Financial Insights</div>
+        </div>
+        <div class="tab-content">
+            <div id="accounts" class="tab-pane">
+                <h2>Accounts</h2>
+                <ul>
+                    <li>Checking Account: $1000</li>
+                    <li>Savings Account: $5000</li>
+                    <li>Credit Card: -$500</li>
+                </ul>
+            </div>
+            <div id="credit-score" class="tab-pane">
+                <h2>Credit Score</h2>
+                <p>Your current credit score: 750</p>
+                <p>View detailed credit report</p>
+            </div>
+            <div id="budgeting" class="tab-pane">
+                <h2>Budgeting</h2>
+                <p>Your budgeting tools will be available here.</p>
+            </div>
+            <div id="financial-insights" class="tab-pane">
+                <h2>Financial Insights</h2>
+                <p>Your financial insights will be available here.</p>
+            </div>
+        </div>
+        <div class="tab-content">
+            <h2>Sample Transactions</h2>
+            <ul>
+                <li>Transaction 1: $50 - Category: Grocery</li>
+                <li>Transaction 2: $25 - Category: Entertainment</li>
+                <li>Transaction 3: $100 - Category: Shopping</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
